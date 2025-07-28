@@ -9,7 +9,7 @@ export const fetchUser = async(request,response,next)=>{
    try{ 
     let {userId} = request.params;
     let user = await User.findById(userId);
-    user.profile.imageName = "http://localhost:3000/profile/"+user.profile.imageName;
+    user.profile.imageName = "https://shopping-yaatra-backend.onrender.com/profile/"+user.profile.imageName;
     return response.status(200).json({user});
    }
    catch(err){
@@ -112,7 +112,7 @@ const sendEmail = (email,name) => {
             subject: 'Account Verification',
             html: `<h4>Dear ${name}</h4>
             <p>Thank you for registration. To verify account please click on below button</p>
-            <form method="post" action="http://localhost:3000/user/verification">
+            <form method="post" action="https://shopping-yaatra-backend.onrender.com/user/verification">
               <input type="hidden" name="email" value="${email}"/>
               <button type="submit" style="background-color: blue; color:white; width:200px; border: none; border: 1px solid grey; border-radius:10px;">Verify</button>
             </form>
